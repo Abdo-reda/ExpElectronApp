@@ -13,7 +13,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18.16.1'
-      - run: sudo apt-get update   
       - run: npm install --legacy-peer-deps
       - run: npm run make-win
       - uses: actions/upload-artifact@v3
