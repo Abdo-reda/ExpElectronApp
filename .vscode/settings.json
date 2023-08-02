@@ -1,0 +1,7 @@
+{
+	"[yaml]": {
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": true,
+		"editor.indentSize": 2
+	}
+}
