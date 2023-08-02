@@ -5,6 +5,13 @@ module.exports = {
   rebuildConfig: {},
   makers: [
     {
+      name: '@electron-forge/maker-dmg',
+      config: {
+        // background: './assets/dmg-background.png',
+        // format: 'ULFO'
+      }
+    },
+    {
       name: '@electron-forge/maker-squirrel',
       config: {},
     },
@@ -24,10 +31,10 @@ module.exports = {
     //   config: {},
     // },
   ],
-  plugins: [
-    {
-      name: '@electron-forge/plugin-auto-unpack-natives',
-      config: {},
-    },
-  ],
+  // plugins: [
+  //   {
+  //     name: '@electron-forge/plugin-auto-unpack-natives',
+  //     config: {},
+  //   },
+  // ],
 };
