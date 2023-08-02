@@ -31,8 +31,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18.16.1'
-      - run: apt-get update
-      - run: apt-get install fakeroot dpkg -y       
+      - run: sudo apt-get update
+      - run: sudo apt-get install fakeroot dpkg -y       
       - run: npm install --legacy-peer-deps
       - run: npm run make-linux
       - uses: actions/upload-artifact@v3
