@@ -1,0 +1,26 @@
+name: create-installers
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build_mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - run: sudo apt-get update   
+      - run: npm install --legacy-peer-deps
+      - run: npm run make-mac
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mac-out
+          path: out
+          retention-days: 7
+
+          
+
