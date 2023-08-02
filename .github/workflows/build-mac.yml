@@ -1,4 +1,4 @@
-name: create-installers
+name: create-mac-installer
 
 on:
   workflow_dispatch:

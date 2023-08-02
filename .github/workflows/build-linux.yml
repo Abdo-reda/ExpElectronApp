@@ -1,4 +1,4 @@
-name: create-installers
+name: create-linux-installer
 
 on:
   workflow_dispatch:
