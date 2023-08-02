@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  build_mac:
+  build_win:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,7 +17,7 @@ jobs:
       - run: npm run make-win
       - uses: actions/upload-artifact@v3
         with:
-          name: mac-out
+          name: win-out
           path: out
           retention-days: 7
 
