@@ -4,6 +4,7 @@ module.exports = {
     executableName: 'basic-app',
     name: 'blah',
     asar: true,
+    prune: true,
   },
   rebuildConfig: {},
   makers: [
@@ -27,8 +28,8 @@ module.exports = {
       options: {
         // maintainer: 'Joe Bloggs',
         // homepage: 'https://example.com'
-        // name: 'basic-app',
-        // productName: 'basic-app'
+        name: 'blah',
+        productName: 'blah'
       }
     },
     // {
