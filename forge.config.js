@@ -26,6 +26,7 @@ module.exports = {
         appUserModelId: 'basic.app.com',
         manufacturer: 'Me',
         version: '1.0.0',
+        icon: 'electron/basic_cube_icon.ico',
         shortcutFolderName: 'BasicApp',
         name: 'Basic App',
         features: {
