@@ -1,0 +1,36 @@
+name: create-win-installer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - name: Download Binaries
+        run: |
+          $url = 'https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip'
+          $output = 'binaries.zip'
+          Invoke-WebRequest -Uri $url -OutFile $output
+      - name: Extract Binaries
+        run: |
+          Expand-Archive -Path binaries.zip -DestinationPath binaries_folder
+      - name: Add to Environment Variables
+        run: |
+          $envPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+          $newPath = $envPath + ';C:\path\to\binaries_folder'
+          [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
+      - run: npm install --legacy-peer-deps
+      - run: npm run make-win
+      - uses: actions/upload-artifact@v3
+        with:
+          name: win-out
+          path: out
+          retention-days: 7
+
+          
+

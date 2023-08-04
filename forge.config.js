@@ -15,9 +15,26 @@ module.exports = {
         // format: 'ULFO'
       }
     },
+    // {
+    //   name: '@electron-forge/maker-squirrel',
+    //   config: {},
+    // },
     {
-      name: '@electron-forge/maker-squirrel',
-      config: {},
+      name: '@electron-forge/maker-wix',
+      config: {
+        language: 1033,
+        appUserModelId: 'basic.app.com',
+        manufacturer: 'Me',
+        version: '1.0.0',
+        shortcutFolderName: 'BasicApp',
+        name: 'Basic App',
+        features: {
+          autoLaunch: true,
+        },
+        ui: {
+          chooseDirectory: true,
+        }
+      }
     },
     // {
     //   name: '@electron-forge/maker-zip',
