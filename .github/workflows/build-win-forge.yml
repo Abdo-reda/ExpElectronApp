@@ -1,28 +1,23 @@
-name: create-linux-installer
+name: create-win-installer-forge
 
 on:
   workflow_dispatch:
 
 jobs:
-  build_linux:
-    runs-on: ubuntu-latest
+  build_win:
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '18.16.1'
-      - run: sudo apt-get update
-      - run: sudo apt-get install fakeroot dpkg -y       
-      - run: npm install --legacy-peer-deps
-      - run: npm run make-linux
+      - run: npm install ci
+      - run: npm run make-win
       - uses: actions/upload-artifact@v3
         with:
-          name: linux-out
+          name: win-out
           path: out
           retention-days: 7
-
-
-
 
           
 

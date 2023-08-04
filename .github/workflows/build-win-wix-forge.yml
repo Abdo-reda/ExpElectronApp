@@ -1,4 +1,4 @@
-name: create-win-wix-installer
+name: create-win-wix-installer-forge
 
 on:
   workflow_dispatch:
@@ -18,13 +18,14 @@ jobs:
           Invoke-WebRequest -Uri $url -OutFile $output
       - name: Extract Binaries
         run: |
-          Expand-Archive -Path binaries.zip -DestinationPath binaries_folder
+          Expand-Archive -Path binaries.zip -DestinationPath wix_binaries
       - name: Add to Environment Variables
         run: |
           $envPath = [Environment]::GetEnvironmentVariable('Path', 'User')
-          $newPath = $envPath + ';C:\path\to\binaries_folder'
-          [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
-      - run: npm install --legacy-peer-deps
+          $wixPath = Join-Path $PWD "wix_binaries"
+          $newEnvPath = $envPath + ';' + $wixPath 
+          [Environment]::SetEnvironmentVariable('Path', $newEnvPath, 'User')
+      - run: npm install ci
       - run: npm run make-win
       - uses: actions/upload-artifact@v3
         with:

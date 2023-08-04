@@ -1,4 +1,4 @@
-name: create-installers
+name: create-installers-forge
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
           node-version: '18.16.1'
       - run: sudo apt-get update
       - run: sudo apt-get install fakeroot dpkg -y       
-      - run: npm install --legacy-peer-deps
+      - run: npm install ci
       - run: npm run make-linux
       - uses: actions/upload-artifact@v3
         with:
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18.16.1'
-      - run: npm install --legacy-peer-deps
+      - run: npm install ci
       - run: npm run make-mac
       - uses: actions/upload-artifact@v3
         with:
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18.16.1'
-      - run: npm install --legacy-peer-deps
+      - run: npm install ci
       - run: npm run make-win
       - uses: actions/upload-artifact@v3
         with:
