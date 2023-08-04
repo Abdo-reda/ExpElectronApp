@@ -1,4 +1,4 @@
-name: create-win-installer
+name: create-win-wix-installer
 
 on:
   workflow_dispatch:
@@ -28,7 +28,7 @@ jobs:
       - run: npm run make-win
       - uses: actions/upload-artifact@v3
         with:
-          name: win-out
+          name: win-wix-out
           path: out
           retention-days: 7
 
