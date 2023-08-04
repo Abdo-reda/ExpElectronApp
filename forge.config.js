@@ -2,6 +2,7 @@ module.exports = {
   packagerConfig: {
     // name: 'blah',
     executableName: 'blah',
+    name: 'basic-app',
     asar: true,
   },
   rebuildConfig: {},
@@ -26,8 +27,8 @@ module.exports = {
       options: {
         // maintainer: 'Joe Bloggs',
         // homepage: 'https://example.com'
-        // name: 'blah',
-        // productName: 'blah'
+        name: 'basic-app',
+        productName: 'basic-app'
       }
     },
     // {
