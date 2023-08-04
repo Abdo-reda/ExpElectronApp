@@ -19,12 +19,10 @@ jobs:
       - name: Extract Binaries
         run: |
           Expand-Archive -Path binaries.zip -DestinationPath wix_binaries
-      - name: Add to Environment Variables
+      - name: Add wix to Environment Variables
         run: |
-          $envPath = [Environment]::GetEnvironmentVariable('Path', 'User')
           $wixPath = Join-Path $PWD "wix_binaries"
-          $newEnvPath = $envPath + ';' + $wixPath 
-          [Environment]::SetEnvironmentVariable('Path', $newEnvPath, 'User')
+          $env:Path += ';' + $wixPath 
       - run: npm install ci
       - run: npm run make-win
       - uses: actions/upload-artifact@v3
