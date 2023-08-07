@@ -1,0 +1,58 @@
+name: create-installers-builder
+
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - run: sudo apt-get update
+      - run: sudo apt-get install fakeroot dpkg -y       
+      - run: npm install ci
+      - run: npm run make-builder
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux-out
+          path: out
+          retention-days: 7
+
+  build_mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - run: npm install ci
+      - run: npm run make-builder
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mac-out
+          path: out
+          retention-days: 7
+
+  build_win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - run: npm install ci
+      - run: npm run make-builder
+      - uses: actions/upload-artifact@v3
+        with:
+          name: win-out
+          path: out
+          retention-days: 7
+
+
+          
+

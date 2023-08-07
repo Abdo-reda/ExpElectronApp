@@ -1,0 +1,23 @@
+name: create-mac-installer-builder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      - run: npm install ci
+      - run: npm run make-builder
+      - uses: actions/upload-artifact@v3
+        with:
+          name: mac-out
+          path: out
+          retention-days: 7
+
+          
+
