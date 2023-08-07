@@ -16,6 +16,9 @@ module.exports = {
     "!**/{appveyor.yml,.travis.yml,circle.yml}",
     "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}"
   ],
+  directories: {
+    output: "dist/${platform}/${arch}"
+  },
   linux: {
     target: [
       "AppImage",

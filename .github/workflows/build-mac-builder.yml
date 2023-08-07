@@ -16,7 +16,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: mac-out
-          path: out
+          path: dist
           retention-days: 7
 
           
