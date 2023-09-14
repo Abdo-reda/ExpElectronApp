@@ -31,9 +31,15 @@ module.exports = {
         name: 'Basic App',
         features: {
           autoLaunch: true,
+          autoUpdate: true,
         },
         ui: {
           chooseDirectory: true,
+        },
+        beforeCreate: async (msiCreator) => {
+          msiCreator.wixTemplate = getTemplate('myWix', false);
+          msiCreator.updaterTemplate = getTemplate('myUpdateFeature', true);
+          console.info('msiCreator config', msiCreator);
         }
       }
     },
@@ -61,4 +67,14 @@ module.exports = {
   //     config: {},
   //   },
   // ],
+};
+
+
+const getTemplate = (name, trimTrailingNewLine) => {
+  const content = fs.readFileSync(path.join(__dirname, `temp/${name}.xml`), 'utf-8');
+  if (trimTrailingNewLine) {
+    return content.replace(/[\r\n]+$/g, '');
+  } else {
+    return content;
+  }
 };
