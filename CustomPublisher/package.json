@@ -1,0 +1,17 @@
+{
+  "name": "custom-publisher",
+  "version": "1.0.0",
+  "description": "A Custom Publisher For Electron Forge",
+  "main": "dist/CustomPublisher.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "NoPoint",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/publisher-base": "^6.4.2"
+  },
+  "dependencies": {
+    "@electron-forge/plugin-base": "^6.4.2"
+  }
+}

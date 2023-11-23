@@ -8,5 +8,24 @@
   <body>
     <h1>💖 Hello World!</h1>
     <p>Welcome to your Electron application.</p>
+    <p> Version 1 </p>
+    <!-- <p> verion 1.0.1 </p> -->
+    <!-- <p> version 1.0.2 </p> -->
+    <form id="tempForm">
+      <input id="inputLink" type="text" />
+      <button onclick="changeUpdateLink()" type="submit"> Submit </button>
+    </form>
+    <script>
+      let inputElement = document.getElementById("inputLink");
+      document.getElementById("tempForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+      })
+
+      function changeUpdateLink() {
+        const newLink = inputElement.value;
+        window.electron.changeLink(newLink);
+      }
+
+    </script>
   </body>
 </html>
